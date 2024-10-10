@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
 <body>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+<h1>File Upload</h1>
+
+<form method="POST" action = "{{url_for('upload_image')}}" enctype="multipart/form-data">
+    <input type='file' name='file' accept="image/*" required='required'>
+    <input type='submit' value='Upload File'>
+</form>
 
 </body>
 </html>
