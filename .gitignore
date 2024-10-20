@@ -1,3 +1,4 @@
 .venv
 data
-DATASET
+test_dir
+train_dir

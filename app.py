@@ -9,7 +9,7 @@ import keras
 app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path='/')
 
 #model = pickle.load(open('models/model7008.pkl', 'rb'))
-model = keras.models.load_model('./models/model.keras')
+model = keras.models.load_model('./models/modelkaggle.keras')
 
 
 # Limiting the size of uploading files 
@@ -18,14 +18,19 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
-EMOTION = {
-    0: "surprised",
-    1: "scared",
-    2: "disgust",
-    3: "happy",
-    4: "sad",
-    5: "angry",
-    6: "neutral"
+categories = {
+    0: "battery",
+    1: "biological",
+    2: "brown-glass",
+    3: "cardboard",
+    4: "clothes",
+    5: "green-glass",
+    6: "metal",
+    7: "paper",
+    8: "plastic",
+    9: "shoes",
+    10: "trash",
+    11: "white-glass"
 }
 
 
@@ -60,13 +65,13 @@ def display_and_predict():
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], file_name)
         
         image = PIL.Image.open(file_path)
-        image = image.resize((100, 100))
-        image = np.array(image).reshape(1, 100, 100, 3)
+        image = image.resize((224, 224))
+        image = np.array(image).reshape(1, 224, 224, 3)
         
         prediction = model.predict(image)
         predicted_class = np.argmax(prediction, axis=1)
         
-        prediction = f'Prediction: {EMOTION[predicted_class[0]]}'
+        prediction = f'Prediction: {categories[predicted_class[0]]}'
     
     return render_template('display_and_predict.html', prediction=prediction, file_name=file_name)
 
