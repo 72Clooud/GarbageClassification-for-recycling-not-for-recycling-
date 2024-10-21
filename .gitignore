@@ -3,3 +3,4 @@ data
 test_dir
 train_dir
 models
+static/uploads

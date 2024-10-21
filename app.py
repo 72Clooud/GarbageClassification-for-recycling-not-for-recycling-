@@ -8,7 +8,7 @@ import keras
 
 app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path='/')
 
-#model = pickle.load(open('models/model7008.pkl', 'rb'))
+
 model = keras.models.load_model('./models/modelkaggle.keras')
 
 
@@ -17,7 +17,7 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000
 # Static Folder
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg'}
 categories = {
     0: "battery",
     1: "biological",
@@ -32,6 +32,8 @@ categories = {
     10: "trash",
     11: "white-glass"
 }
+
+recycling = [0, 2, 3, 4, 5, 6, 7, 8, 11]
 
 
 def allowed_file(filename):
@@ -60,6 +62,7 @@ def display_and_predict():
     
     file_name = request.args.get('file_name')
     prediction = None
+    recycling_message = None
     
     if request.method == 'POST':
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], file_name)
@@ -70,10 +73,15 @@ def display_and_predict():
         
         prediction = model.predict(image)
         predicted_class = np.argmax(prediction, axis=1)
-        
+            
         prediction = f'Prediction: {categories[predicted_class[0]]}'
-    
-    return render_template('display_and_predict.html', prediction=prediction, file_name=file_name)
+        
+        if predicted_class in recycling:
+            recycling_message = 'Suitable for recycling'
+        else:
+            recycling_message = 'Not suitable for recycling'
+        
+    return render_template('display_and_predict.html', prediction=prediction, recycling_message=recycling_message, file_name=file_name)
 
 
 if __name__ == ('__main__'):

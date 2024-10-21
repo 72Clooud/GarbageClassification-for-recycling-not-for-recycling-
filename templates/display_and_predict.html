@@ -3,10 +3,14 @@
 <head>
     <meta charset='UTF-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href="{{url_for('static', filename='css/style.css')}}">
+    <title> Prediction Result </title> 
 </head>
 <body>
     <h1>Your Photo</h1>
-    <img src="{{ url_for('static', filename='uploads/' + file_name) }}"alt='Upload Image'>
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='uploads/' + file_name) }}"alt='Upload Image'>
+    </div>
     <br>
 
     <form method='POST'>
@@ -16,6 +20,12 @@
 
     {% if prediction %}
         <h2> {{prediction}} </h2>
+    {% endif %}
+
+    {% if recycling_message %}
+        <h2 class="{{ 'recycable' if 'Suitable' in recycling_message else 'not-recycable'}}">
+             {{recycling_message}} 
+        </h2>
     {% endif %}
 
     <br>
