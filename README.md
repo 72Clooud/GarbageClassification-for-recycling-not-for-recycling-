@@ -1,4 +1,6 @@
 # Garbage Classification with Keras and Flask
+![yes](https://github.com/user-attachments/assets/22d48842-3115-4ddf-9091-c22b9130713c)
+![no](https://github.com/user-attachments/assets/eb76007e-0440-4dda-808a-686125b9be64)
 ## Project Overview
 This project is designed to classify waste as either recyclable or non-recyclable. It uses a Keras neural network model for image classification and Flask as the backend framework for serving a web interface. The goal is to improve the recycling process by automatically sorting waste into various categories, such as paper, plastic, glass, and more
 ## Features
