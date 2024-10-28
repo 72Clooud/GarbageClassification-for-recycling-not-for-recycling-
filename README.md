@@ -19,3 +19,16 @@ This project is designed to classify waste as either recyclable or non-recyclabl
 ## Dataset
 https://www.kaggle.com/datasets/mostafaabla/garbage-classification/data
 If you are the owner of any images and would like them removed from the project, please contact us.
+## Setup
+Below are the steps to run the application using Docker.
+### Prerequisites
+Make sure you have Docker installed on your computer.
+### Step 1: Clone the repository
+```bash
+git clone https://github.com/72Clooud/GarbageClassification-keras-flask--for-recycling-not-for-recycling-.git
+cd GarbageClassification-keras-flask--for-recycling-not-for-recycling-
+```
+### Step 2: Build the Docker image
+`docker build -t garbage-classification .`
+### Step 3: Run the container
+`docker run -p 5000:5000 garbage-classification`
