@@ -29,6 +29,10 @@ git clone https://github.com/72Clooud/GarbageClassification-keras-flask--for-rec
 cd GarbageClassification-keras-flask--for-recycling-not-for-recycling-
 ```
 ### Step 2: Build the Docker image
-`docker build -t garbage-classification .`
+```bash
+docker build -t garbage-classification .
+```
 ### Step 3: Run the container
-`docker run -p 5000:5000 garbage-classification`
+```bash
+docker run -p 5000:5000 garbage-classification
+```
