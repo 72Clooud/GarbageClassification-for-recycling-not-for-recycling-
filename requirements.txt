@@ -99,7 +99,7 @@ tensorflow-metadata==1.16.1
 termcolor==2.5.0
 threadpoolctl==3.5.0
 toml==0.10.2
-tornado==6.4.1
+tornado==6.4.2
 tqdm==4.66.5
 traitlets==5.14.3
 typing_extensions==4.12.2
