@@ -45,7 +45,6 @@ Jinja2==3.1.4
 joblib==1.4.2
 jupyter_client==8.6.3
 jupyter_core==5.7.2
-keras==3.6.0
 kiwisolver==1.4.7
 libclang==18.1.1
 Markdown==3.7
@@ -55,10 +54,12 @@ matplotlib==3.9.2
 matplotlib-inline==0.1.7
 mdurl==0.1.2
 ml-dtypes==0.4.1
+mpmath==1.3.0
 multidict==6.1.0
 multiprocess==0.70.16
 namex==0.0.8
 nest-asyncio==1.6.0
+networkx==3.2.1
 numpy==1.26.4
 opencv-python==4.10.0.84
 opt_einsum==3.4.0
@@ -78,6 +79,7 @@ pyarrow==17.0.0
 Pygments==2.18.0
 pyparsing==3.1.4
 python-dateutil==2.9.0.post0
+python-dotenv==1.0.1
 pytz==2024.2
 pywin32==307
 PyYAML==6.0.2
@@ -89,9 +91,9 @@ scipy==1.14.1
 simple-parsing==0.1.6
 six==1.16.0
 stack-data==0.6.3
+sympy==1.13.1
 tensorboard==2.17.1
 tensorboard-data-server==0.7.2
-tensorflow==2.17.0
 tensorflow-datasets==4.9.6
 tensorflow-intel==2.17.0
 tensorflow-io-gcs-filesystem==0.31.0
@@ -99,7 +101,10 @@ tensorflow-metadata==1.16.1
 termcolor==2.5.0
 threadpoolctl==3.5.0
 toml==0.10.2
-tornado==6.4.2
+torch==2.5.1+cu118
+torchaudio==2.5.1+cu118
+torchvision==0.20.1+cu118
+tornado==6.4.1
 tqdm==4.66.5
 traitlets==5.14.3
 typing_extensions==4.12.2
