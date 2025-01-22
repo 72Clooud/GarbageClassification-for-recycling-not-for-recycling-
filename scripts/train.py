@@ -72,14 +72,29 @@ class DataProcessor:
             for image in tqdm(val_images, desc=f"Copying val images for {category}", unit="image"):
                 shutil.copyfile(os.path.join(category_path, image), os.path.join(self.val_dir, category, image))
                 
-    def create_data_loader(self, batch_size=64, test_batch_size=32):
+    def create_data_loader(self, batch_size=64, test_batch_size=32, data_augmentation: bool = False):
         transform = transforms.Compose([
             transforms.Resize((224, 224)),
             transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
         ])
         
-        train_dataset = CustomDataset(self.train_dir, self.categories, transform)
+        transform_augmented = transforms.Compose([
+            transforms.RandomHorizontalFlip(),
+            transforms.RandomRotation(10),
+            transforms.RandomCrop(192),
+            transforms.Resize((224, 224)),
+            transforms.ToTensor(),
+            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+        ])
+        
+        if data_augmentation:
+            orginal_data = CustomDataset(self.train_dir, self.categories, transform=transform)
+            augmented_data = CustomDataset(self.train_dir, self.categories, transform=transform_augmented)
+            train_dataset = torch.utils.data.ConcatDataset([orginal_data, augmented_data])
+        else:
+            train_dataset = CustomDataset(self.train_dir, self.categories, transform)
+        
         test_dataset = CustomDataset(self.test_dir, self.categories, transform)
         val_dataset = CustomDataset(self.val_dir, self.categories, transform)
         
@@ -214,7 +229,7 @@ if __name__ == '__main__':
     data_processor = DataProcessor('./data', './trina_dir', './test_data', categories)
     data_processor.split_data()
     
-    train_loader, test_loader = data_processor.create_data_loader()
+    train_loader, test_loader = data_processor.create_data_loader(data_augmentation=True)
     
     model_handler = ModelHandler(num_classes=len(categories))
     
