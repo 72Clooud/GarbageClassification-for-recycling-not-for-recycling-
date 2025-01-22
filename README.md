@@ -2,16 +2,16 @@
 ![yes](https://github.com/user-attachments/assets/22d48842-3115-4ddf-9091-c22b9130713c)
 ![no](https://github.com/user-attachments/assets/eb76007e-0440-4dda-808a-686125b9be64)
 ## Project Overview
-This project is designed to classify waste as either recyclable or non-recyclable. It uses a Keras neural network model for image classification and Flask as the backend framework for serving a web interface. The goal is to improve the recycling process by automatically sorting waste into various categories, such as paper, plastic, glass, and more
+This project is designed to classify waste as either recyclable or non-recyclable. It leverages PyTorch and transfer learning with EfficientNetV2_S for image classification and Flask as the backend framework for serving a web interface. The aim is to enhance the recycling process by automating the sorting of waste into various categories, such as paper, plastic, glass, and more.
 ## Features
 - Classifies waste into 12 categories: paper, plastic, metal, glass (brown, green, white), shoes, clothes, batteries, organic waste, and other trash.
 - Flask-based web app for uploading images of waste for classification.
-- Uses a Convolutional Neural Network (CNN) for image classification.
+- Uses transfer learning with EfficientNetV2_S for state-of-the-art image classification performance.
 - REST API support for easy integration with other systems.
 ## Technologies Used
 - Python
-- Keras – to build the neural network model.
-- TensorFlow – as the backend for Keras.
+- PyTorch – for building and training the neural network model.
+- EfficientNetV2_S – for transfer learning to achieve high classification accuracy.
 - Flask – to run the web application.
 - PIL – for image processing.
 - Matplotlib – for visualization
