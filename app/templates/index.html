@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href="{{ url_for('static', filename='css/style.css') }}">
+    <title> Garbage Classification </title>
+</head>
+<body>
+
+<h1>File Upload</h1>
+
+<div class="center-container">
+    <form method="POST" action = "{{url_for('upload_image')}}" enctype="multipart/form-data">
+        <input type='file' name='file' accept="image/*" required='required'>
+        <br></br>
+        <input type='submit' value='Upload File'>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href="{{url_for('static', filename='css/style.css')}}">
+    <title> Prediction Result </title> 
+</head>
+<body>
+    <h1>Your Photo</h1>
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='uploads/' + file_name) }}" alt="Uploaded Image">
+    </div>
+    <br>
+
+    <form method='POST'>
+        <input type="hidden" name="file_name" value="{{file_name}}">
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if predicted_class %}
+        <h2> {{predicted_class}} </h2>
+    {% endif %}
+
+    {% if recycling_message %}
+        <h2 class="{{ 'recycable' if 'Suitable' in recycling_message else 'not-recycable'}}">
+             {{recycling_message}} 
+        </h2>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('root') }}">Upload another image</a>
+
+</body>
+</html>

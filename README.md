@@ -1,4 +1,4 @@
-# Garbage Classification with Keras and Flask
+# Garbage Classification with Pytorch
 ![yes](https://github.com/user-attachments/assets/22d48842-3115-4ddf-9091-c22b9130713c)
 ![no](https://github.com/user-attachments/assets/eb76007e-0440-4dda-808a-686125b9be64)
 ## Project Overview
